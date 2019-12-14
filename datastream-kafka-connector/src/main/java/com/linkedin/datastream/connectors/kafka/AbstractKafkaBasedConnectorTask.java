@@ -349,6 +349,7 @@ abstract public class AbstractKafkaBasedConnectorTask implements Runnable, Consu
       if (null != _consumer) {
         _consumer.close();
       }
+      _kafkaPositionTracker.ifPresent(KafkaPositionTracker::close);
       _logger.info("{} stopped", _taskName);
     }
   }
